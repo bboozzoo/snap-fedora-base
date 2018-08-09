@@ -41,6 +41,12 @@ snap:
 	sudo rm -rf $(CURDIR)/prime/var/cache/dnf
 	sudo rm -rf $(CURDIR)/prime/var/tmp/*
 
+	# Remove build-id files.
+	sudo rm -rf $(CURDIR)/prime/usr/lib/.build-id
+
+	# Remove RPM and DNF meta-data
+	sudo rm -rf $(CURDIR)/prime/var/lib/{rpm,dnf}
+
 	# Remove everything in the /etc directory, leaving a few empty integration
 	# points (for bind mounting):
 	#  - /etc/nsswitch.conf
