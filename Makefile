@@ -56,9 +56,6 @@ snap:
 	sudo install -d $(CURDIR)/prime/etc/{alternatives,ssl}
 	sudo touch $(CURDIR)/prime/etc/nsswitch.conf
 
-	# Post-process variant information in os-release.
-	sudo sed -i -e 's/VARIANT="Workstation Edition"/VARIANT="Base Snap Edition"/' -e 's/VARIANT_ID=workstation/VARIANT_ID=snap/' $(CURDIR)/prime/usr/lib/os-release
-
 	# Make all of the files in the snap owner-writable. This is works around a
 	# bug in the store: https://bugs.launchpad.net/snapstore/+bug/1786071
 	sudo chmod -R -v +w $(CURDIR)/prime
