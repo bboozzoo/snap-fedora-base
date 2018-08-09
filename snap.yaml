@@ -1,0 +1,33 @@
+# The basic meta-data about the snap, the name, version and some text.
+#
+# The name follows the ${name}${version} pattern, like core16 and core18 for
+# the base snaps derived from Ubuntu. The name encodes the release because we
+# are expected to install multiple bases in parallel (e.g. both fedora28 and
+# fedora29 can be installed at the same time).
+#
+# The version can be more of a time snapshot than a real version since we
+# encode the release name in the package name already. 
+name: fedora29
+version: 2018.08.09
+summary: Runtime environment based on Fedora 29
+description: |
+    The base snap based on the Fedora 29 release.
+
+# The type declaration (which when absent defaults to "app") defines the type
+# or kind of the snap we are making. The "base" type is specific to snaps that
+# act as a base for other snaps.
+#
+# Base snaps are blocked by store review process (since they require high level
+# of trust and maintenance).
+type: base
+
+# License declared as an SPDX expression or the word "Proprietary".  See
+# https://spdx.org/licenses/ for the full list.
+license: MIT
+
+# Grade constraints publishing of "under development" snaps to the stable
+# channel in the snap store. Here we say the grade is "devel" because the base
+# snap is not final yet.
+grade: devel 
+
+architectures: [amd64]
