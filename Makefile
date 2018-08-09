@@ -1,5 +1,5 @@
 # The set of packages to install inside the base snap
-seed_packages=filesystem coreutils bash util-linux glibc-minimal-langpack
+seed_packages=filesystem coreutils bash glibc-minimal-langpack
 unseed_packages=
 # The Fedora release we are building the base snap with
 release=29
