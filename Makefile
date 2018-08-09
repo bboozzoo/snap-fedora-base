@@ -40,7 +40,7 @@ all: fedora$(release).$(version).$(my_arch).snap
 fedora$(release).$(version).%.snap: arch=$*
 fedora$(release).$(version).%.snap: cache=$(CURDIR)/cache.$(arch)
 fedora$(release).$(version).%.snap: prime=$(CURDIR)/prime.$(arch)
-$(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(release).$(version).%.snap: cache.%
+$(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(release).$(version).%.snap: cache.% Makefile
 	# Copy the cache directory to the prime directory where we prepare our snap.
 	rsync -a $(cache)/ $(prime)/
 
