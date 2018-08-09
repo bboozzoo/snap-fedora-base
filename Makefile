@@ -98,7 +98,7 @@ $(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(r
 .PHONY: cache
 cache: $(foreach arch,$(arch_list),cache.$(arch))
 
-# THis is how you cache data for a given architecture.
+# This is how you cache data for a given architecture.
 cache.%: cache=$(CURDIR)/cache.$*
 cache.%: arch=$*
 $(foreach arch,$(arch_list),cache.$(arch)): cache.%:
