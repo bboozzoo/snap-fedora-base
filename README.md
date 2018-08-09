@@ -2,6 +2,16 @@
 
 This repository contains tools for building a Fedora (currently F29) Base Snap
 
+# Installation
+
+Currently the snap is only published to the `edge` channel so it is *not*
+installed as an automatic dependency of application snaps. To install it
+manually run: `sudo snap install --edge fedora29`.
+
+Note that installing it doesn't mean you can run it. Base snaps don't expose
+any applications to the host. They are only used as execution environments of
+*other* snaps that explicitly choose to use them, see the FAQ for more details.
+
 # FAQ
 
 ## Q: What is a base snap?
@@ -34,7 +44,7 @@ A: Not at this time, it will only become supported once the hand-off to the
    updated RPMs as they arrive into the archive.
 
 ## Q: Which architectures are available?
-A: Currently only `x86_64` and `i686`, once the hand-off is complete all 
+A: Currently only `x86_64` and `i686`. Once the hand-off is complete all
    architectures supported by snapd itself should be supported.
 
 ## Q: Which packages are included in the `fedora29` snap?
@@ -57,14 +67,18 @@ A: Perhaps, but this is not validated automatically yet. In the future the snap
 ## Q: How do I build this locally?
 A: Just `sudo make`, you can also `sudo make cache`, go offline and then `sudo make`
    as many times as you like (for those long flights while you are offline).
+   The resulting snap can be installed with `snap install --dangerous ./fedora*.snap`.
+   It will be automatically used by existing snaps that choose to use it.
 
 ## Q: How do I make new releases into the snap store?
-A: Currently only _Zygmunt Kryncki_ can do it. Once the hand-off process is
-   complete it will be in the hands of the Fedora infrastructure team and it
-   will be built automatically.
+A: Currently only _Zygmunt Kryncki_ can do it. Once the hand-off is complete it
+   will be in the hands of the Fedora infrastructure team and it will be built
+   automatically along with each compose.
 
 ## Q: Why is the license MIT?
-A: The aggregate license is MIT, individual constituent packages have their own license.
+A: The aggregate license is MIT, individual constituent packages have their own
+   license which can be found in `usr/share/licenses` relative to the root of the
+   snap.
 
 ## Q: How is this snap built?
 A: The snap is built out of vanilla binary RPMs downloaded with `dnf` from the
@@ -74,7 +88,7 @@ A: The snap is built out of vanilla binary RPMs downloaded with `dnf` from the
    details please look at the makefile, we tried to document the action and
    intent of all the operations.
 
-## Q: Why is the snap built manually and not with a `snapcraft.yaml` files?
+## Q: Why is the snap built manually and not with a `snapcraft.yaml`?
 A: Because snapcraft cannot yet build anything out of RPM components. This work
    is meant to break the catch-22 dependency cycle so that snapcraft itself can
    be improved to support RPM-based distributions.
