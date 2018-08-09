@@ -73,12 +73,10 @@ $(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(r
 
 	# Remove everything in the /etc directory, leaving a few empty integration
 	# points (for bind mounting):
-	#  - /etc/nsswitch.conf
 	#  - /etc/alternatives (directory)
 	#  - /etc/ssl (directory)
 	rm -rf $(prime)/etc/*
 	install -d $(prime)/etc/{alternatives,ssl}
-	touch $(prime)/etc/nsswitch.conf
 
 	# Make all of the files in the snap owner-writable. This is works around a
 	# bug in the store: https://bugs.launchpad.net/snapstore/+bug/1786071
