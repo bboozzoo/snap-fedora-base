@@ -30,4 +30,9 @@ license: MIT
 # snap is not final yet.
 grade: devel
 
+# Architectures defines the list of architectures this snap is compatible with.
+# Typically this is just one or the entry "all" for architecture independent
+# snaps. Note that for historic reasons the architectures in the snap store are
+# following Debian naming scheme. For example x86_64 is called amd64 and
+# aarch64 is called arm64.
 architectures: [@ARCH@]
