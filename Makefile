@@ -50,6 +50,7 @@ $(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(r
 		dnf $(dnf_opts) --forcearch=$(arch) --installroot=$(prime) install https://kojipkgs.fedoraproject.org//packages/texinfo/6.5/11.fc29/x86_64/info-6.5-11.fc29.x86_64.rpm; \
 	fi
 	dnf $(dnf_opts) --forcearch=$(arch) --cacheonly --installroot=$(prime) install $(seed_packages)
+	dnf $(dnf_opts) --forcearch=$(arch) --cacheonly --installroot=$(prime) remove glibc-all-langpacks
 
 	# Install the /meta/snap.yaml file, replacing the @ARCH@ and @VERSION@ fields as appropriate
 	install -d $(prime)/meta
