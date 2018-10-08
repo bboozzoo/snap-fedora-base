@@ -80,10 +80,6 @@ $(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(r
 	rm -rf $(prime)/etc/*
 	install -d $(prime)/etc/{alternatives,ssl}
 
-	# Make all of the files in the snap owner-writable. This is works around a
-	# bug in the store: https://bugs.launchpad.net/snapstore/+bug/1786071
-	chmod -R -v +w $(prime)
-
 	# Neuter all the setuid root executables that are flagged by store review.
 	# Eventually this can be reviewed and decided upon (if said executable
 	# should exist and should be +s) but for the purpose of iteration is not
