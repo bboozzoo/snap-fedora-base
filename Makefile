@@ -44,13 +44,7 @@ $(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(r
 	# Copy the cache directory to the prime directory where we prepare our snap.
 	rsync -a $(cache)/ $(prime)/
 
-	# Install a hotfix for the info package to prevent a hang.
-	# For details see:https://bugzilla.redhat.com/show_bug.cgi?id=1614162
-	if [ "$(arch)" = x86_64 ]; then \
-		dnf $(dnf_opts) --forcearch=$(arch) --installroot=$(prime) install https://kojipkgs.fedoraproject.org//packages/texinfo/6.5/11.fc29/x86_64/info-6.5-11.fc29.x86_64.rpm; \
-	fi
 	dnf $(dnf_opts) --forcearch=$(arch) --cacheonly --installroot=$(prime) install $(seed_packages)
-	dnf $(dnf_opts) --forcearch=$(arch) --cacheonly --installroot=$(prime) remove glibc-all-langpacks
 
 	# Install the /meta/snap.yaml file, replacing the @ARCH@ and @VERSION@ fields as appropriate
 	install -d $(prime)/meta
