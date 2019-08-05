@@ -75,6 +75,18 @@ $(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(r
 	rm -rf $(prime)/etc/*
 	install -d $(prime)/etc/{alternatives,ssl}
 
+	# Integration points for bind mounts:
+	# - /usr/share/fonts
+	# - /usr/local/share/fonts
+	# - /var/cache/fontconfig
+	#   NOTE: Fedora uses /usr/lib/fontconfig/cache, however
+	#   /etc/fonts/fonts.conf from the host is visible within the mount ns of
+	#   the snap, thus per host's confguration, the cache may reside in
+	#   /var/cache/fontconfig
+	install -d $(prime)/usr/share/fonts
+	install -d $(prime)/usr/local/share/fonts
+	install -d $(prime)/var/cache/fontconfig
+
 	# Neuter all the setuid root executables that are flagged by store review.
 	# Eventually this can be reviewed and decided upon (if said executable
 	# should exist and should be +s) but for the purpose of iteration is not

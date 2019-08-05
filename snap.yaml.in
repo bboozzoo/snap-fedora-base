@@ -20,7 +20,6 @@ description: |
 # Base snaps are blocked by store review process (since they require high level
 # of trust and maintenance).
 type: base
-base: none
 
 # License declared as an SPDX expression or the word "Proprietary".  See
 # https://spdx.org/licenses/ for the full list.
