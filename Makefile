@@ -34,13 +34,13 @@ $(foreach arch,$(arch_list),$(if $(arch_mapping[$(arch)]),,$(error Please provid
 
 # Build all the base snap for the current architecture by default
 .PHONY: all
-all: fedora$(release).$(version).$(my_arch).snap
+all: fedora$(release)_$(version)_$(my_arch).snap
 
 # This is how you build a fedora base snap
-fedora$(release).$(version).%.snap: arch=$*
-fedora$(release).$(version).%.snap: cache=$(CURDIR)/cache.$(arch)
-fedora$(release).$(version).%.snap: prime=$(CURDIR)/prime.$(arch)
-$(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap): fedora$(release).$(version).%.snap: cache.% Makefile
+fedora$(release)_$(version)_%.snap: arch=$*
+fedora$(release)_$(version)_%.snap: cache=$(CURDIR)/cache.$(arch)
+fedora$(release)_$(version)_%.snap: prime=$(CURDIR)/prime.$(arch)
+$(foreach arch,$(arch_list),fedora$(release)_$(version)_$(arch).snap): fedora$(release)_$(version)_%.snap: cache.% Makefile
 	# Copy the cache directory to the prime directory where we prepare our snap.
 	rsync -a $(cache)/ $(prime)/
 
@@ -122,7 +122,7 @@ $(foreach arch,$(arch_list),cache.$(arch)): cache.%:
 .PHONY: clean
 clean:
 	rm -rf $(foreach arch,$(arch_list),prime.$(arch))
-	rm -f  $(foreach arch,$(arch_list),fedora$(release).$(version).$(arch).snap)
+	rm -f  $(foreach arch,$(arch_list),fedora$(release)_$(version)_$(arch).snap)
 
 # The distclean target removes the cache and everything clean would remove.
 .PHONY: distclean
