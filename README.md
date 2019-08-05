@@ -1,12 +1,12 @@
 # Fedora Base Snap
 
-This repository contains tools for building a Fedora (currently F29) Base Snap
+This repository contains tools for building a Fedora (currently F30) Base Snap
 
 # Installation
 
 Currently the snap is only published to the `edge` channel so it is *not*
 installed as an automatic dependency of application snaps. To install it
-manually run: `sudo snap install --edge fedora29`.
+manually run: `sudo snap install --edge fedora30`.
 
 Note that installing it doesn't mean you can run it. Base snaps don't expose
 any applications to the host. They are only used as execution environments of
@@ -29,7 +29,7 @@ A: It is meant to be but won't be really official until the hand-off process
 ## Q: How to use this snap?
 A: The snap is meant for early adopters who wish to experiment with making
    application snaps based on Fedora technologies. As with any other base snap
-   all it takes is a `base: fedora29` declaration in a `meta/snap.yaml` file.
+   all it takes is a `base: fedora30` declaration in a `meta/snap.yaml` file.
    Currently snapcraft doesn't yet support building snaps in the RPM world
    so all application snaps need to be built manually, with other tools.
    The presence of this snap simply allows us to work on the remaining part
@@ -38,7 +38,7 @@ A: The snap is meant for early adopters who wish to experiment with making
    For some inspiration you can look at the `hello-fedora` snap, available in a
    sibling git repository as well as in the snap store.
 
-## Q: Is the `fedora29` snap supported?
+## Q: Is the `fedora30` snap supported?
 A: Not at this time, it will only become supported once the hand-off to the
    Fedora infrastructure team is complete. Then it will simply be produced out of
    updated RPMs as they arrive into the archive.
@@ -47,7 +47,7 @@ A: Not at this time, it will only become supported once the hand-off to the
 A: Currently only `x86_64` and `i686`. Once the hand-off is complete all
    architectures supported by snapd itself should be supported.
 
-## Q: Which packages are included in the `fedora29` snap?
+## Q: Which packages are included in the `fedora30` snap?
 A: Currently those are `filesystem`, `coreutils`, `bash` `glibc-minimal-langpack`
    along with their non-weak dependencies.
 
@@ -99,8 +99,8 @@ A: *Yes*, although we found a bug while doing this work so you may need to wait
    Specifically we need this pull request to be merged into snapd
    https://github.com/snapcore/snapd/pull/5620
 
-## Q: Why is it called `fedora29` and not just `fedora`
+## Q: Why is it called `fedora30` and not just `fedora`
 A: This mimics the `core16` and `core18` names for the existing Ubuntu Core
-   snaps. In addition this means that you can trivially install both fedora29 and
+   snaps. In addition this means that you can trivially install both fedora30 and
    fedora30 and run applications that require either of the bases at the same
    time.

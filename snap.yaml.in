@@ -7,11 +7,11 @@
 #
 # The version can be more of a time snapshot than a real version since we
 # encode the release name in the package name already.
-name: fedora29
+name: fedora30
 version: @VERSION@
-summary: Runtime environment based on Fedora 29
+summary: Runtime environment based on Fedora 30
 description: |
-    The base snap based on the Fedora 29 release.
+    The base snap based on the Fedora 30 release.
 
 # The type declaration (which when absent defaults to "app") defines the type
 # or kind of the snap we are making. The "base" type is specific to snaps that
@@ -20,6 +20,7 @@ description: |
 # Base snaps are blocked by store review process (since they require high level
 # of trust and maintenance).
 type: base
+base: none
 
 # License declared as an SPDX expression or the word "Proprietary".  See
 # https://spdx.org/licenses/ for the full list.

@@ -3,7 +3,7 @@ seed_packages=filesystem coreutils bash glibc-minimal-langpack
 # The list of architectures we wish to build for
 arch_list=i686 x86_64 armhfp aarch64
 # The Fedora release we are building the base snap with
-release=29
+release=30
 version:=$(shell date +%Y.%m.%d)
 
 # NOTE: The rest should of the file should be OK as-is, unchanged
