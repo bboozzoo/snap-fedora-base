@@ -93,14 +93,6 @@ $(foreach arch,$(arch_list),fedora$(release)_$(version)_$(arch).snap): fedora$(r
 	# done at this moment.
 	chmod -R -s $(prime)
 
-	# Work around a bug in snapd by shipping a hacked os-release file.  This
-	# can be removed once https://github.com/snapcore/snapd/pull/5620 is merged
-	# and released in snapd 2.35. In addition the file without the extra
-	# "ID=ubuntu-core" line should be added to `fedora-release-snappy` package.
-	install -d $(prime)/usr/lib/os.release.d
-	install -m 644 os-release-snappy $(prime)/usr/lib/os.release.d/
-	ln -sf ./os.release.d/os-release-snappy $(prime)/usr/lib/os-release
-
 	# Create the squashfs file
 	mksquashfs $(prime) $@ -noappend -comp xz -no-xattrs -no-fragments
 
